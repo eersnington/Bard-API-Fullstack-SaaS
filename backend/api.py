@@ -20,6 +20,15 @@ async def generate_keywords_api(prompt: str):
     return {"prompt": f"{prompt}", "keywords": keywords}
 
 
+@app.get("/generate_keywords_and_snippet")
+async def generate_keywords_and_snippet_api(prompt: str):
+    validate_input(prompt)
+
+    keywords = generate_keywords(prompt)
+    snippet = generate_branding_snippet(prompt)
+    return {"prompt": f"{prompt}", "keywords": keywords, "snippet": snippet}
+
+
 def validate_input(prompt: str):
     if len(prompt) > get_max_input_length():
         raise HTTPException(
