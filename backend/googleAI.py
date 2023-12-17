@@ -37,8 +37,9 @@ def generate_branding_snippet(user_input: str):
     print(prompt)
 
     response = bard_api(prompt)
-    print(f"Snippet: {response.text}")
-    return response.text
+    snippet = response.text.strip()
+    print(f"Snippet: {snippet}")
+    return snippet
 
 
 def generate_keywords(user_input: str):
@@ -58,6 +59,10 @@ def generate_keywords(user_input: str):
 
     print(f"Keywords: {keywords_arr}")
     return keywords_arr
+
+
+def get_max_input_length():
+    return MAX_INPUT_LENGTH
 
 
 if __name__ == "__main__":
