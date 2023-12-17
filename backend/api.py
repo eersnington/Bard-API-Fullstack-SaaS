@@ -1,7 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from googleAI import generate_branding_snippet, generate_keywords, get_max_input_length
+from mangum import Mangum
 
 app = FastAPI()
+handler = Mangum(app)
 
 
 @app.get("/generate_snippet")
