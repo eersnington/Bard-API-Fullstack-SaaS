@@ -2,7 +2,7 @@
 
 React | FastAPI | AWS Lambda | Vercel
 
-Just a project I did to learn the above techstack
+Just a project I did to get comfortable with the above techstack
 
 ## Description
 
