@@ -1,6 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -24,5 +25,12 @@ export class BackendInfraStack extends cdk.Stack {
       }
     });
 
+    const backendApi = new apigateway.RestApi(this, 'RestApi', {
+      restApiName: 'BackendApi',
+    });
+
+    backendApi.root.addProxy({
+      defaultIntegration: new apigateway.LambdaIntegration(apiLambda),
+    });
   }
 }
