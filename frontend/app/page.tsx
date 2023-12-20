@@ -1,11 +1,11 @@
 import Image from "next/image";
-import SnippetForm from "./components/snippetForm";
+import Box from "./components/box";
 
 export default function Home() {
   return (
     <main>
       <div>
-        <SnippetForm />
+        <Box />
       </div>
     </main>
   );

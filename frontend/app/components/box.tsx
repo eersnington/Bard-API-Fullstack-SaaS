@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+import FormComponent from "./formComponent";
+import ResultsComponent from "./resultsComponent";
 
-const SnippetForm: React.FC = () => {
+const Box: React.FC = () => {
   const [prompt, setPrompt] = React.useState("");
   const [snippet, setSnippet] = React.useState("");
   const [keywords, setKeywords] = React.useState([]);
@@ -27,35 +29,38 @@ const SnippetForm: React.FC = () => {
     setFetched(true);
   };
 
-  let resultElement = null;
+  const onReset = () => {
+    setPrompt("");
+    setSnippet("");
+    setKeywords([]);
+    setFetched(false);
+  };
+
+  let displayedElement = null;
 
   if (fetched) {
-    resultElement = (
-      <>
-        <h2>Snippet</h2>
-        <p>{snippet}</p>
-        <h2>Keywords</h2>
-        <p>{keywords.join(", ")}</p>
-      </>
+    displayedElement = (
+      <ResultsComponent
+        snippet={snippet}
+        keywords={keywords}
+        onBack={onReset}
+      />
+    );
+  } else {
+    displayedElement = (
+      <FormComponent
+        prompt={prompt}
+        setPrompt={setPrompt}
+        onSubmit={onSubmit}
+      />
     );
   }
 
   return (
     <>
       <h1>Snippet Form</h1>
-      <p>
-        Tell me what your brand is about and I will generate a branding phrase
-        and keywords for you!
-      </p>
-      <input
-        type="text"
-        placeholder="Yoga mats"
-        value={prompt}
-        onChange={(e) => setPrompt(e.target.value)}
-      ></input>
-      <button onClick={onSubmit}>Generate</button>
-      {resultElement}
+      {displayedElement}
     </>
   );
 };
-export default SnippetForm;
+export default Box;
