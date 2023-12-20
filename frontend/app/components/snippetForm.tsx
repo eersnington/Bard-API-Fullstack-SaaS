@@ -31,12 +31,12 @@ const SnippetForm: React.FC = () => {
 
   if (fetched) {
     resultElement = (
-      <div>
+      <>
         <h2>Snippet</h2>
         <p>{snippet}</p>
         <h2>Keywords</h2>
         <p>{keywords.join(", ")}</p>
-      </div>
+      </>
     );
   }
 
