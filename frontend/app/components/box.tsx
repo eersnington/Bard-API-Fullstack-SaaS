@@ -41,6 +41,7 @@ const Box: React.FC = () => {
   if (fetched) {
     displayedElement = (
       <ResultsComponent
+        prompt={prompt}
         snippet={snippet}
         keywords={keywords}
         onBack={onReset}
