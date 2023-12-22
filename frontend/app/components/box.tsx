@@ -30,6 +30,7 @@ const Box: React.FC = () => {
   };
 
   const onReset = () => {
+    console.log("Resetting!");
     setPrompt("");
     setSnippet("");
     setKeywords([]);
