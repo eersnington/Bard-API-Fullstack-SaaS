@@ -84,7 +84,7 @@ const Box: React.FC = () => {
   }
 
   const gradientTextStyle =
-    "text-white text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-700 w-fit mx-auto";
+    "text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-700 w-fit mx-auto";
 
   return (
     <div className="h-screen flex">
