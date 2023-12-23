@@ -17,6 +17,9 @@ const Box: React.FC = () => {
     "https://buzv928rp8.execute-api.ap-south-1.amazonaws.com/prod";
 
   const onSubmit = () => {
+    if (prompt.length === 0) {
+      setPrompt("Yoga mats");
+    }
     console.log(`Submitting: ${prompt}`);
     setIsLoading(true);
     fetch(`${ENDPOINT}/generate_keywords_and_snippet?prompt=${prompt}`)
