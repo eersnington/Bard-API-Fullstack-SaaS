@@ -94,7 +94,11 @@ const Box: React.FC = () => {
             <div className="flex justify-center">
               <Image src={logo} alt="Vercel Logo" width={64} height={64} />
             </div>
-            <h1 className={gradientTextStyle + " text-3xl font-semibold py-4"}>
+            <h1
+              className={
+                "text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-700 w-fit mx-auto text-3xl font-semibold py-4"
+              }
+            >
               Ember AI
             </h1>
             <div className={gradientTextStyle + " font-medium"}>
