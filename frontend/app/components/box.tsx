@@ -78,8 +78,7 @@ const Box: React.FC = () => {
     );
   }
 
-  return (
-    <div className="h-screen flex">
+  return (    <div className="h-screen flex">
       <div className="max-w-md m-auto p-2">
         <div className="bg-gray-200 p-6 rounded-md">
           <h1 className="text-3xl">Snippet Form</h1>
