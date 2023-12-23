@@ -30,6 +30,7 @@ const Box: React.FC = () => {
       .catch((err) => {
         if (err.status === 400) {
           alert("Error: Input character limit exceeded!");
+          console.log(err);
         } else {
           alert("Something went wrong!\nPlease try again later.");
           console.log(err);
