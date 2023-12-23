@@ -33,7 +33,10 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
       <div>
         {props.prompt.length}/{props.characterLimit}
       </div>
-      <button onClick={props.onSubmit} disabled={isPromptTooLong}>
+      <button
+        onClick={props.onSubmit}
+        disabled={props.isLoading || isPromptTooLong}
+      >
         Generate
       </button>
     </>

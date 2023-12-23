@@ -22,10 +22,10 @@ const Box: React.FC = () => {
         if (res.ok) {
           res.json().then((data) => {
             onResult(data);
-            return;
           });
+        } else {
+          return Promise.reject(res);
         }
-        return Promise.reject(res);
       })
       .catch((err) => {
         if (err.status === 400) {
@@ -34,6 +34,7 @@ const Box: React.FC = () => {
           alert("Something went wrong!\nPlease try again later.");
           console.log(err);
         }
+        onReset();
       });
   };
 
@@ -50,6 +51,7 @@ const Box: React.FC = () => {
     setSnippet("");
     setKeywords([]);
     setFetched(false);
+    setIsLoading(false);
   };
 
   let displayedElement = null;
