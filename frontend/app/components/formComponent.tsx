@@ -5,9 +5,19 @@ interface FormComponentProps {
   prompt: string;
   setPrompt: (prompt: string) => void;
   onSubmit: () => void;
+  isLoading: boolean;
+  characterLimit: number;
 }
 
 const FormComponent: React.FC<FormComponentProps> = (props) => {
+  const isPromptTooLong = props.prompt.length > props.characterLimit;
+
+  const updatePrompt = (text: string) => {
+    if (text.length <= props.characterLimit) {
+      props.setPrompt(text);
+    }
+  };
+
   return (
     <>
       <p>
@@ -18,9 +28,14 @@ const FormComponent: React.FC<FormComponentProps> = (props) => {
         type="text"
         placeholder="Yoga mats"
         value={props.prompt}
-        onChange={(e) => props.setPrompt(e.target.value)}
+        onChange={(e) => updatePrompt(e.target.value)}
       ></input>
-      <button onClick={props.onSubmit}>Generate</button>
+      <div>
+        {props.prompt.length}/{props.characterLimit}
+      </div>
+      <button onClick={props.onSubmit} disabled={isPromptTooLong}>
+        Generate
+      </button>
     </>
   );
 };

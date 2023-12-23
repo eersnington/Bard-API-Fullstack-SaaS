@@ -4,22 +4,37 @@ import FormComponent from "./formComponent";
 import ResultsComponent from "./resultsComponent";
 
 const Box: React.FC = () => {
+  const CHARACTER_LIMIT = 32;
   const [prompt, setPrompt] = React.useState("");
   const [snippet, setSnippet] = React.useState("");
   const [keywords, setKeywords] = React.useState([]);
   const [fetched, setFetched] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+
   const ENDPOINT: string =
     "https://buzv928rp8.execute-api.ap-south-1.amazonaws.com/prod";
 
   const onSubmit = () => {
     console.log(`Submitting: ${prompt}`);
-    fetch(`${ENDPOINT}/generate_keywords_and_snippet?prompt=${prompt}`).then(
-      (res) => {
-        res.json().then((data) => {
-          onResult(data);
-        });
-      }
-    );
+    setIsLoading(true);
+    fetch(`${ENDPOINT}/generate_keywords_and_snippet?prompt=${prompt}`)
+      .then((res) => {
+        if (res.ok) {
+          res.json().then((data) => {
+            onResult(data);
+            return;
+          });
+        }
+        return Promise.reject(res);
+      })
+      .catch((err) => {
+        if (err.status === 400) {
+          alert("Error: Input character limit exceeded!");
+        } else {
+          alert("Something went wrong!\nPlease try again later.");
+          console.log(err);
+        }
+      });
   };
 
   const onResult = (data: any) => {
@@ -54,6 +69,8 @@ const Box: React.FC = () => {
         prompt={prompt}
         setPrompt={setPrompt}
         onSubmit={onSubmit}
+        isLoading={isLoading}
+        characterLimit={CHARACTER_LIMIT}
       />
     );
   }
