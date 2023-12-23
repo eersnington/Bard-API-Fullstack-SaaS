@@ -79,10 +79,14 @@ const Box: React.FC = () => {
   }
 
   return (
-    <>
-      <h1>Snippet Form</h1>
-      {displayedElement}
-    </>
+    <div className="h-screen flex">
+      <div className="max-w-md m-auto p-2">
+        <div className="bg-gray-200 p-6 rounded-md">
+          <h1 className="text-3xl">Snippet Form</h1>
+          {displayedElement}
+        </div>
+      </div>
+    </div>
   );
 };
 export default Box;
