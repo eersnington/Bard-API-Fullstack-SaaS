@@ -98,7 +98,7 @@ const Box: React.FC = () => {
               Ember AI
             </h1>
             <div className={gradientTextStyle + " font-medium"}>
-              Fuel Your Brands Fire with Ember AI Assistant
+              Fuel Your Brand&apos;s Fire with Ember AI Assistant
             </div>
           </div>
           {displayedElement}
