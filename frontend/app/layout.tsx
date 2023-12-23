@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "PaLM API App",
+  title: "Ember AI Branding Assistant",
   description:
     "Generate snippet and keywords for your brand using Google's Gemini Model",
 };

@@ -2,6 +2,8 @@
 import React from "react";
 import FormComponent from "./formComponent";
 import ResultsComponent from "./resultsComponent";
+import Image from "next/image";
+import logo from "../../public/logo.png";
 
 const Box: React.FC = () => {
   const CHARACTER_LIMIT = 32;
@@ -78,10 +80,24 @@ const Box: React.FC = () => {
     );
   }
 
-  return (    <div className="h-screen flex">
+  const gradientTextStyle =
+    "text-white text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-700 w-fit mx-auto";
+
+  return (
+    <div className="h-screen flex">
       <div className="max-w-md m-auto p-2">
-        <div className="bg-gray-200 p-6 rounded-md">
-          <h1 className="text-3xl">Snippet Form</h1>
+        <div className="bg-gray-900 p-6 rounded-md text-white">
+          <div className="text-center mb-6">
+            <div className="flex justify-center">
+              <Image src={logo} alt="Vercel Logo" width={64} height={64} />
+            </div>
+            <h1 className={gradientTextStyle + " text-3xl font-semibold py-4"}>
+              Ember AI
+            </h1>
+            <div className={gradientTextStyle + " font-medium"}>
+              Fuel Your Brand's Fire with Ember AI Assistant
+            </div>
+          </div>
           {displayedElement}
         </div>
       </div>
