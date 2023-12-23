@@ -14,16 +14,27 @@ const ResultsComponent: React.FC<ResultsComponentProps> = (props) => {
     const element = <div key={i}>#{props.keywords[i]}</div>;
     keywordElements.push(element);
   }
+  const gradientButtonStyle =
+    "w-full p-2 bg-gradient-to-r from-amber-500 to-amber-700";
+
   return (
-    <>
-      <h2>Prompt</h2>
+    <div className="my-2 py-4">
+      <h2 className="font-semibold">Prompt</h2>
       <p>{props.prompt}</p>
-      <h2>Snippet</h2>
+      <h2 className="font-semibold">Snippet</h2>
       <p>{props.snippet}</p>
-      <h2>Keywords</h2>
+      <h2 className="font-semibold">Keywords</h2>
       {keywordElements}
-      <button onClick={props.onBack}>Back</button>
-    </>
+      <button
+        className={
+          gradientButtonStyle +
+          " rounded-md text-white text-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+        }
+        onClick={props.onBack}
+      >
+        Back
+      </button>
+    </div>
   );
 };
 
